@@ -20,7 +20,7 @@ public:
 	void setEstado(char est);
 	void setPrecioAlquiler(string cat);
 	void setCategoria(char cat);
-	void actualizarBitacora(string est);
+	void actualizarBitacora(string est, Colaborador* c, Fecha* f);
 	string getPlaca();
 	string getModelo();
 	string getMarca();

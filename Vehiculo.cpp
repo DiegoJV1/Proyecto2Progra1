@@ -109,8 +109,8 @@ void Vehiculo::setCategoria(char cat) {
 	}
 	
 }
-void Vehiculo::actualizarBitacora(string est) {
-	bitacoraEstado->insertarEstado(est);
+void Vehiculo::actualizarBitacora(string est,Colaborador* c, Fecha* f) {
+	bitacoraEstado->insertarEstado(est, c, f);
 }
 string Vehiculo::getPlaca() { return placa; }
 string Vehiculo::getModelo() { return modelo; }
