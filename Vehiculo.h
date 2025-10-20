@@ -9,7 +9,7 @@ private:
 	ColeccionEstado* bitacoraEstado;
 public:
 	Vehiculo();
-	Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, char est, Cliente* dueno, ColeccionEstado* b);
+	Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, Cliente* dueno, ColeccionEstado* b);
 	~Vehiculo();
 	void setDueno(Cliente* aux);
 	void setPlaca(string placa);
@@ -32,5 +32,6 @@ public:
 	Cliente* getDueno();
 	string toStringBitacora();
 	string toString();
+	void actualizaEstado(char est);
 };
 

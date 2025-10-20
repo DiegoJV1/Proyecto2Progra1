@@ -8,6 +8,7 @@ public:
 	ColeccionEstado();
 	~ColeccionEstado();
 	void insertarEstado(string aux);
+	string getUltimo();
 	string toString();
 };
 

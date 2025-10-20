@@ -45,6 +45,27 @@
     <ClCompile Include="ColeccionEstado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NodoVehiculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColeccionVehiculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Colaborador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoColaborador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColeccionColaborador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plantel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Estacionamiento.h">
@@ -72,6 +93,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ColeccionEstado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoVehiculo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColeccionVehiculo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Colaborador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoColaborador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColeccionColaborador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plantel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

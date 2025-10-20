@@ -19,13 +19,20 @@ void ColeccionEstado::insertarEstado(string aux) {
 		actual->setSig(nuevo);
 	}
 }
+string ColeccionEstado::getUltimo() {
+	actual = inicio;
+	while (actual) {
+		actual = actual->getSig();
+	}
+	return actual->getObj();
+}
 string ColeccionEstado::toString() {
 	stringstream ss;
-	ss << "Lista de Clientes: " << endl;
+	ss << "Bitacora de Estados: " << endl;
 	actual = inicio;
 	int i = 0;
 	while (actual) {
-		ss << "Cliente #" << i << ":" << endl;
+		ss << "Estado #" << i << ":" << endl;
 		ss << actual->getObj() << endl;
 		actual = actual->getSig();
 		i++;

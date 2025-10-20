@@ -1,13 +1,12 @@
 #include "Vehiculo.h"
 #include<sstream>
 Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), bitacoraEstado(nullptr), PrecioAlquiler(0.0){}
-Vehiculo::Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, char est, Cliente* dueno, ColeccionEstado* b): placa(placa), modelo(modelo), marca(marca), ubiPlantel(ubi), tipoLicencia(lic), dueno(dueno), bitacoraEstado(b) {
+Vehiculo::Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, Cliente* dueno, ColeccionEstado* b): placa(placa), modelo(modelo), marca(marca), ubiPlantel(ubi), tipoLicencia(lic), dueno(dueno), bitacoraEstado(b) {
 	setCategoria(cat);
-	setEstado(est);
+	setEstado('D');
 	setPrecioAlquiler(categoria);
 }
 Vehiculo::~Vehiculo() {
-	bitacoraEstado->~ColeccionEstado();
 	delete bitacoraEstado;
 	bitacoraEstado = nullptr;
 }
@@ -21,19 +20,56 @@ void Vehiculo::setEstado(char est) {
 	switch (est) {
 	case 'A':
 		this->estado = "Disponible";
+		actualizarBitacora("Disponible");
 		break;
 	case 'B':
 		this->estado = "Alquilado";
+		actualizarBitacora("Alquilado");
 		break;
 	case 'C':
 		this->estado = "Devuelto";
+		actualizarBitacora("Devuelto");
 		break;
 	case 'D':
 		this->estado = "Revision";
+		actualizarBitacora("Revision");
 		break;
 	case 'E':
 		this->estado = "Lavado";
+		actualizarBitacora("Lavado");
 		break;
+	}
+}
+void Vehiculo::actualizaEstado(char est) {
+	if (bitacoraEstado->getUltimo() == "Disponible") {
+		if (est == 'B' || est == 'D' || est == 'E') {
+			setEstado(est);
+		}
+		else { return; }
+	}
+	else if (bitacoraEstado->getUltimo() == "Alquilado") {
+		if (est == 'A' || est == 'C') {
+			setEstado(est);
+		}
+		else { return; }
+	}
+	else if (bitacoraEstado->getUltimo() == "Devuelto") {
+		if (est == 'D' || est == 'E') {
+			setEstado(est);
+		}
+		else { return; }
+	}
+	else if (bitacoraEstado->getUltimo() == "Revision") {
+		if (est == 'E') {
+			setEstado(est);
+		}
+		else { return; }
+	}
+	else if (bitacoraEstado->getUltimo() == "Lavado") {
+		if (est == 'A' || est == 'D') {
+			setEstado(est);
+		}
+		else { return; }
 	}
 }
 void Vehiculo::setPrecioAlquiler(string cat) { 
@@ -48,6 +84,9 @@ void Vehiculo::setPrecioAlquiler(string cat) {
 	}
 	else if (cat == "4x4") {
 		this->PrecioAlquiler = 50000;
+	}
+	else {
+		this->PrecioAlquiler = 0;
 	}
 }
 void Vehiculo::setCategoria(char cat) {
@@ -64,7 +103,11 @@ void Vehiculo::setCategoria(char cat) {
 	case 'D':
 		this->categoria = "4x4";
 		break;
+	default:
+		this->categoria = "Sin Categoria";
+		break;
 	}
+	
 }
 void Vehiculo::actualizarBitacora(string est) {
 	bitacoraEstado->insertarEstado(est);
@@ -94,6 +137,11 @@ string Vehiculo::toString() {
 	ss << "Categoria: " << categoria << endl;
 	ss << "Precio Alquiler: " << PrecioAlquiler << endl;
 	ss << " Dueno: " << endl;
-	ss << dueno->toString() << endl;
+	if (dueno) {
+		ss << dueno->toString() << endl;
+	}
+	else {
+		ss << "Dueno Nulo" << endl;
+	}
 	return ss.str();
 }
