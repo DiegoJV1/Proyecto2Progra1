@@ -8,14 +8,14 @@ private:
 	Fecha* fechaIngreso;
 public:
 	Colaborador();
-	Colaborador(string id, string nom, string fecha);
+	Colaborador(string id, string nom, Fecha* fecha);
 	~Colaborador();
 	void setNombre(string nom);
 	void setId(string id);
-	void setFechaIngreso(string fecha);
+	void setFechaIngreso(Fecha* fecha);
 	string getNombre();
 	string getId();
-	string getFechaIngreso();
+	Fecha* getFechaIngreso();
 	string toString();
 };
 

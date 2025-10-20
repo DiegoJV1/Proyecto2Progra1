@@ -23,6 +23,7 @@ public:
 	void insertarVehiculo(Vehiculo* aux, string cod, int num1, int num2);
 
 	string recomendacionDeEstacionamiento();
+	int espaciosLibres();
 	string toString();
 
 };

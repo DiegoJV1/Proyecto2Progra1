@@ -8,8 +8,8 @@ ColeccionEstado::~ColeccionEstado() {
 		delete actual;
 	}
 }
-void ColeccionEstado::insertarEstado(string aux) {
-	NodoEstado* nuevo = new NodoEstado(aux);
+void ColeccionEstado::insertarEstado(string aux, Colaborador* c, Fecha* fecha) {
+	NodoEstado* nuevo = new NodoEstado(aux, c, fecha);
 	if (!inicio) { inicio = nuevo; }
 	else {
 		actual = inicio;
@@ -33,7 +33,7 @@ string ColeccionEstado::toString() {
 	int i = 0;
 	while (actual) {
 		ss << "Estado #" << i << ":" << endl;
-		ss << actual->getObj() << endl;
+		ss << actual->toString() << endl;
 		actual = actual->getSig();
 		i++;
 	}

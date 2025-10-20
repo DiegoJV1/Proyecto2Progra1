@@ -78,6 +78,17 @@ string Plantel::recomendacionDeEstacionamiento(){
 		}
 	}
 }
+int Plantel::espaciosLibres() {
+	int contador = 0;
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (!p[i][j] || p[i][j]->getEstado() == false) {
+				contador++;
+			}
+		}
+	}
+	return contador;
+}
 string Plantel::toString(){
 	stringstream ss;
 	for (int i = 0; i < filas; i++) {

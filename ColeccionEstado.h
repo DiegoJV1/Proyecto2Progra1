@@ -7,7 +7,7 @@ private:
 public:
 	ColeccionEstado();
 	~ColeccionEstado();
-	void insertarEstado(string aux);
+	void insertarEstado(string aux, Colaborador* c, Fecha* fecha);
 	string getUltimo();
 	string toString();
 };

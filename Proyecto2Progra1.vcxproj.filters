@@ -63,7 +63,25 @@
     <ClCompile Include="Plantel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.cpp">
+    <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoPlantel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sucursal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColeccionPlantel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoSucursal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColeccionSucursal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RentACar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,7 +131,25 @@
     <ClInclude Include="Plantel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.h">
+    <ClInclude Include="Fecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoPlantel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sucursal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColeccionPlantel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoSucursal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColeccionSucursal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RentACar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

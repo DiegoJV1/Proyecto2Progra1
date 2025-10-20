@@ -123,40 +123,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.cpp" />
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="Colaborador.cpp" />
     <ClCompile Include="ColeccionCliente.cpp" />
     <ClCompile Include="ColeccionColaborador.cpp" />
     <ClCompile Include="ColeccionEstado.cpp" />
+    <ClCompile Include="ColeccionPlantel.cpp" />
+    <ClCompile Include="ColeccionSucursal.cpp" />
     <ClCompile Include="ColeccionVehiculo.cpp" />
     <ClCompile Include="Estacionamiento.cpp" />
+    <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NodoCliente.cpp" />
     <ClCompile Include="NodoColaborador.cpp" />
     <ClCompile Include="NodoEstado.cpp" />
+    <ClCompile Include="NodoPlantel.cpp" />
+    <ClCompile Include="NodoSucursal.cpp" />
     <ClCompile Include="NodoVehiculo.cpp" />
     <ClCompile Include="PersonaFisica.cpp" />
     <ClCompile Include="PersonaJuridica.cpp" />
     <ClCompile Include="Plantel.cpp" />
+    <ClCompile Include="RentACar.cpp" />
+    <ClCompile Include="Sucursal.cpp" />
     <ClCompile Include="Vehiculo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\proyecto 1 progra 1\ProyectoPowerLab\ProyectoPowerLab\Fecha.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Colaborador.h" />
     <ClInclude Include="ColeccionCliente.h" />
     <ClInclude Include="ColeccionColaborador.h" />
     <ClInclude Include="ColeccionEstado.h" />
+    <ClInclude Include="ColeccionPlantel.h" />
+    <ClInclude Include="ColeccionSucursal.h" />
     <ClInclude Include="ColeccionVehiculo.h" />
     <ClInclude Include="Estacionamiento.h" />
+    <ClInclude Include="Fecha.h" />
     <ClInclude Include="NodoCliente.h" />
     <ClInclude Include="NodoColaborador.h" />
     <ClInclude Include="NodoEstado.h" />
+    <ClInclude Include="NodoPlantel.h" />
+    <ClInclude Include="NodoSucursal.h" />
     <ClInclude Include="NodoVehiculo.h" />
     <ClInclude Include="PersonaFisica.h" />
     <ClInclude Include="PersonaJuridica.h" />
     <ClInclude Include="Plantel.h" />
+    <ClInclude Include="RentACar.h" />
+    <ClInclude Include="Sucursal.h" />
     <ClInclude Include="Vehiculo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
