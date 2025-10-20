@@ -70,13 +70,164 @@ void Plantel::insertarVehiculo(Vehiculo* aux, string cod, int num1, int num2){
 }
 string Plantel::recomendacionDeEstacionamiento(){
 	stringstream ss;
+	int contador = 0;
+	int hayRecomendados = 0;
 	ss << toString() << endl << endl;
 	ss << "Espacios Recomendados: " << endl;
 	for (int i = 0; i < filas; i++) {
 		for (int j = 0; j < columnas; j++) {
-			
+			//esquinas
+			if (i == 0 && j == 0) {
+				if (p[i][j+1]->getEstado()) {
+					contador++;
+				}
+				if (p[i+1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i+1][j + 1]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i == filas && j == 0) {
+				if (p[i][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j + 1]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i == 0 && j == columnas) {
+				if (p[i][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j -1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i == filas && j == columnas) {
+				if (p[i - 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j-1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j - 1]->getEstado()) {
+					contador++;
+				}
+			}
+			//laterales
+			if (i == 0 && j!= 0 && j!=columnas) {
+				if (p[i][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j+1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j-1]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i != 0 && i != filas && j == 0) {
+				if (p[i][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i+1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j+1]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j + 1]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i != 0 && i != filas && j == columnas) {
+				if (p[i-1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i-1][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j-1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i+1][j]->getEstado()) {
+					contador++;
+				}
+			}
+			if (i == filas && j != 0 && j == columnas) {
+				if (p[i-1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i-1][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j - 1]->getEstado()) {
+					contador++;
+				}
+			}
+			//normales
+			if (i != 0 && i != filas && j != 0 && j != columnas) {
+				if (p[i][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i + 1][j - 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j + 1]->getEstado()) {
+					contador++;
+				}
+				if (p[i - 1][j - 1]->getEstado()) {
+					contador++;
+				}
+			}
+			if (contador == 0) {
+				ss << p[i][j]->getCodigo() << endl;
+				hayRecomendados++;
+			}
+			contador = 0;
 		}
 	}
+	if (hayRecomendados == 0) {
+		cout << "No hay estacionamientos recomendados" << endl;
+	}
+	return ss.str();
 }
 int Plantel::espaciosLibres() {
 	int contador = 0;
