@@ -25,7 +25,7 @@ void ColeccionVehiculo::insertarVehiculo(Vehiculo* aux) {
 }
 void ColeccionVehiculo::eliminarVehiculo(string placa) {
 	if (buscarVehiculo(placa) == true) {
-		if (inicio->getObj()->getPlaca() == placa) {
+		if (inicio->getObj()->getPlaca() == placa && inicio->getObj()->getEstado()!="Alquilado") {
 			actual = inicio;
 			inicio = inicio->getSig();
 			delete actual->getObj();
@@ -35,7 +35,7 @@ void ColeccionVehiculo::eliminarVehiculo(string placa) {
 			actual = inicio->getSig();
 			NodoVehiculo* anterior = inicio;
 			while (actual) {
-				if (actual->getObj()->getPlaca() == placa) {
+				if (actual->getObj()->getPlaca() == placa && actual->getObj()->getEstado() != "Alquilado") {
 					anterior->setSig(actual->getSig());
 					delete actual->getObj();
 					delete actual;

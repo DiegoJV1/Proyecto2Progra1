@@ -21,6 +21,8 @@ public:
 
 	void setCodigosEstacionamientos();
 	void insertarVehiculo(Vehiculo* aux, string cod, int num1, int num2);
+	Estacionamiento* buscarEstacionamientoPorVehiculo(string placa);
+	bool buscarVehiculo(string placa);
 
 	string recomendacionDeEstacionamiento();
 	int espaciosLibres();

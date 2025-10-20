@@ -56,6 +56,15 @@ bool ColeccionPlantel::buscarPlantel(string iden) {
 	}
 	return false;
 }
+Plantel* ColeccionPlantel::buscarPlantelPorVehiculo(string placa) {
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->buscarVehiculo(placa) == true) {
+			return actual->getObj();
+		}
+		actual = actual->getSig();
+	}
+}
 string ColeccionPlantel::plantelRecomendado() {
 	if (inicio) {
 		Plantel* mayor = inicio->getObj();

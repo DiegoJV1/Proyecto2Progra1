@@ -56,6 +56,29 @@ bool ColeccionSucursal::buscarSucursal(string num) {
 	}
 	return false;
 }
+void ColeccionSucursal::intercambiarEntreSucursal(Vehiculo* vaux, Sucursal* saux) {
+	if (vaux->getEstado() != "Alquilado") {
+		if (buscarSucursal(saux->getNum()) == true) {
+			Sucursal* antigua = nullptr;
+			while (actual) {
+				if (actual->getObj()->getVehiculos()->buscarVehiculo(vaux->getPlaca()) == true) {
+					antigua = actual->getObj();
+					break;
+				}
+				actual = actual->getSig();
+			}
+			if (antigua) {
+				saux->insertarVehiculo(vaux);
+				antigua->getPlanteles()->buscarPlantelPorVehiculo(vaux->getPlaca())->buscarEstacionamientoPorVehiculo(vaux->getPlaca());
+				antigua->eliminarVehiculo(vaux->getPlaca());
+				
+			}
+			else { return; }
+
+		}
+	}
+	else { return; }
+}
 string ColeccionSucursal::toString() {
 	stringstream ss;
 	ss << "Lista de Sucursales: " << endl;

@@ -10,6 +10,7 @@ public:
 	void insertarPlantel(Plantel* aux);
 	void eliminarPlantel(string iden);
 	bool buscarPlantel(string iden);
+	Plantel* buscarPlantelPorVehiculo(string placa);
 	string plantelRecomendado();
 	string toString();
 };

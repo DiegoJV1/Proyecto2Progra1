@@ -23,6 +23,10 @@ public:
 	void insertarVehiculo(Vehiculo* aux);
 	void insertarColabordor(Colaborador* aux);
 	void insertarPlantel(Plantel* aux);
+	ColeccionPlantel* getPlanteles();
+	ColeccionCliente* getClientes();
+	ColeccionColaborador* getColaboradores();
+	ColeccionVehiculo* getVehiculos();
 	void eliminarCliente(string id);
 	void eliminarVehiculo(string placa);
 	void eliminarColaborador(string id);

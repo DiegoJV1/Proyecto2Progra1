@@ -81,6 +81,10 @@ void Sucursal::eliminarPlantel(string identificacion) {
 		return;
 	}
 }
+ColeccionPlantel* Sucursal::getPlanteles() { return planteles; }
+ColeccionCliente* Sucursal::getClientes() { return clientes; }
+ColeccionColaborador* Sucursal::getColaboradores() { return colaboradores; }
+ColeccionVehiculo* Sucursal::getVehiculos() { return vehiculos; }
 
 string Sucursal::recomendacionDePlantel() {
 	if (planteles) {

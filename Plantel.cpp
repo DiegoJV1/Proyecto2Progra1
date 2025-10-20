@@ -89,6 +89,24 @@ int Plantel::espaciosLibres() {
 	}
 	return contador;
 }
+bool Plantel::buscarVehiculo(string placa) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (p[i][j] && p[i][j]->getV()->getPlaca() == placa) {
+				return true;
+			}
+		}
+	}
+}
+Estacionamiento* Plantel::buscarEstacionamientoPorVehiculo(string placa) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (p[i][j] && p[i][j]->getV()->getPlaca() ==placa ) {
+				p[i][j]->setEstado('D');
+			}
+		}
+	}
+}
 string Plantel::toString(){
 	stringstream ss;
 	for (int i = 0; i < filas; i++) {
