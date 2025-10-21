@@ -84,6 +84,9 @@
     <ClCompile Include="RentACar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SolicitudAlquiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Estacionamiento.h">
@@ -150,6 +153,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RentACar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SolicitudAlquiler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

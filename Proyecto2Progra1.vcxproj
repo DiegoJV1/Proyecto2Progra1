@@ -144,6 +144,7 @@
     <ClCompile Include="PersonaJuridica.cpp" />
     <ClCompile Include="Plantel.cpp" />
     <ClCompile Include="RentACar.cpp" />
+    <ClCompile Include="SolicitudAlquiler.cpp" />
     <ClCompile Include="Sucursal.cpp" />
     <ClCompile Include="Vehiculo.cpp" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <ClInclude Include="PersonaJuridica.h" />
     <ClInclude Include="Plantel.h" />
     <ClInclude Include="RentACar.h" />
+    <ClInclude Include="SolicitudAlquiler.h" />
     <ClInclude Include="Sucursal.h" />
     <ClInclude Include="Vehiculo.h" />
   </ItemGroup>
