@@ -16,3 +16,4 @@ string Cliente::toString() {
 	ss << "Lugar de Residencia: " << residencia << endl;
 	return ss.str();
 }
+//
