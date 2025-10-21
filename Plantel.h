@@ -27,6 +27,6 @@ public:
 	string recomendacionDeEstacionamiento();
 	int espaciosLibres();
 	string toString();
-
+	//hijsdfhkjhn
 };
 
