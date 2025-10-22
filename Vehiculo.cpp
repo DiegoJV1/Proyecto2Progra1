@@ -1,7 +1,10 @@
 #include "Vehiculo.h"
 #include<sstream>
-Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), bitacoraEstado(nullptr), PrecioAlquiler(0.0){}
+Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), bitacoraEstado(nullptr), PrecioAlquiler(0.0){
+	solicitudes = new ColeccionSolicitudAlquiler();
+}
 Vehiculo::Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, Cliente* dueno, ColeccionEstado* b): placa(placa), modelo(modelo), marca(marca), ubiPlantel(ubi), tipoLicencia(lic), dueno(dueno), bitacoraEstado(b) {
+	solicitudes = new ColeccionSolicitudAlquiler();
 	setCategoria(cat);
 	setEstado('D');
 	setPrecioAlquiler(categoria);

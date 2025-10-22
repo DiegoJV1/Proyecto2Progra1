@@ -43,5 +43,6 @@ public:
 
 	void calcularPrecioTotal();
 	void setEstado(string nuevoEstado);
+	virtual string toString();
 };
 

@@ -1,4 +1,5 @@
 #include "SolicitudAlquiler.h"
+#include<sstream>
 SolicitudAlquiler::SolicitudAlquiler(string cod, string idCte, string idCol, string idSuc,string pl, int dias, Fecha* ini, Fecha* ent, float pDia)
     : codigo(cod),
     idCliente(idCte),
@@ -62,4 +63,19 @@ void SolicitudAlquiler::setPrecioDia(float nuevoPDia) {
 
 void SolicitudAlquiler::setEstado(string nuevoEstado) {
     estado = nuevoEstado;
+}
+string SolicitudAlquiler::toString() {
+    stringstream ss;
+    ss << "----Solicitud de Alquiler----" << endl;
+    ss << "Codigo: " << codigo << endl;
+    ss << "Colaborador-Id: " << idColaborador << endl;
+    ss << "Cliente-Id: " << idCliente << endl;
+    ss << "Placa-Vehiculo: " << placa << endl;
+    ss << "Sucursal-Id: " << idSucursal << endl;
+    ss << "Fecha de inicio: " << inicio->toString() << endl;
+    ss << "Fecha de entega: " << entrega->toString() << endl;
+    ss << "Costo Diario: " << precioDia << endl;
+    ss << "Costo Total: " << precioTotal << endl;
+    ss << "Estado: " << estado << endl;
+    return ss.str();
 }
