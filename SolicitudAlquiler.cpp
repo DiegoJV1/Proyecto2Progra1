@@ -61,8 +61,7 @@ void SolicitudAlquiler::setPrecioDia(float nuevoPDia) {
     calcularPrecioTotal();
 }
 
-void SolicitudAlquiler::setEstado(string nuevoEstado) {
-    estado = nuevoEstado;
+void SolicitudAlquiler::setEstado(char nuevoEstado) {
 }
 string SolicitudAlquiler::toString() {
     stringstream ss;

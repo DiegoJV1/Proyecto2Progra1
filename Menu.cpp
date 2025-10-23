@@ -300,7 +300,6 @@ void Menu::ejecutar() {
 						}
 					}
 				}
-				}
 			}
 		}
 		case 2: {

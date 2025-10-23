@@ -23,6 +23,7 @@ void ColeccionSolicitudAlquiler::insertarSolicitud(SolicitudAlquiler* aux) {
 		}
 	}
 }
+
 bool ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	actual = inicio;
 	while (actual) {
