@@ -45,4 +45,5 @@ string ColeccionSolicitudAlquiler::toString() {
 		i++;
 	}
 	return ss.str();
+
 }
