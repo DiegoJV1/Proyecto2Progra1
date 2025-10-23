@@ -1,5 +1,6 @@
 #pragma once
 #include"RentACar.h"
+using namespace std;
 class Menu{
 private:
 	RentACar* negocio;

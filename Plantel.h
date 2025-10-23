@@ -10,7 +10,7 @@ private:
 	Estacionamiento*** p;
 public:
 	Plantel();
-	Plantel(string iden, char tipo);
+	Plantel(string iden, char tipo, int f, int c);
 	~Plantel();
 	void setCapacidad();
 	int getCapacidad();

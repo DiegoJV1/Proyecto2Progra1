@@ -11,6 +11,7 @@ public:
 	void eliminarSucursal(string num);
 	bool buscarSucursal(string num);
 	void intercambiarEntreSucursal(Vehiculo* vaux, Sucursal* saux);
+	Sucursal* getSucursal(string num);
 	string toString();
 };
 

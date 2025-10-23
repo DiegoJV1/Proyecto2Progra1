@@ -56,6 +56,16 @@ bool ColeccionVehiculo::buscarVehiculo(string placa) {
 	}
 	return false;
 }
+Vehiculo* ColeccionVehiculo::getVehiculo(string placa) {
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->getPlaca() == placa) {
+			return actual->getObj();
+		}
+		actual = actual->getSig();
+	}
+	return nullptr;
+}
 string ColeccionVehiculo::toString() {
 	stringstream ss;
 	ss << "Lista de Vehiculos: " << endl;

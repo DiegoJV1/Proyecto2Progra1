@@ -10,6 +10,7 @@ public:
 	void insertarColaborador(Colaborador* aux);
 	void eliminarColaborador(string id);
 	bool buscarColaborador(string id);
+	Colaborador* getColaborador(string id);
 	string toString();
 };
 

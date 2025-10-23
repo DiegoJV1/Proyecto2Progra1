@@ -3,7 +3,10 @@
 Cliente::Cliente(): id(""), nombre(""), residencia("") {
 	solicitudes = new ColeccionSolicitudAlquiler();
 }
-Cliente::~Cliente() {}
+Cliente::~Cliente() {
+	delete solicitudes;
+	solicitudes = nullptr;
+}
 Cliente::Cliente(string id, string nom, string resi): id(id), nombre(nom), residencia(resi) {
 	solicitudes = new ColeccionSolicitudAlquiler();
 }

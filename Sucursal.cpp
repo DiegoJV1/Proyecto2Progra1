@@ -1,7 +1,17 @@
 #include "Sucursal.h"
 #include<sstream>
-Sucursal::Sucursal() : ubicacion(""), clientes(nullptr), colaboradores(nullptr), vehiculos(nullptr), planteles(nullptr), num("") {}
-Sucursal::Sucursal(string ubi, ColeccionCliente* clien, ColeccionColaborador* col, ColeccionVehiculo* ve, ColeccionPlantel* plan, string num) : ubicacion(ubi), clientes(clien), colaboradores(col), vehiculos(ve), planteles(plan), num(num) {}
+Sucursal::Sucursal() : ubicacion(""), num("") {
+	clientes = new ColeccionCliente();
+	colaboradores = new ColeccionColaborador();
+	vehiculos = new ColeccionVehiculo();
+	planteles = new ColeccionPlantel();
+}
+Sucursal::Sucursal(string ubi, string num) : ubicacion(ubi), num(num) {
+	clientes = new ColeccionCliente();
+	colaboradores = new ColeccionColaborador();
+	vehiculos = new ColeccionVehiculo();
+	planteles = new ColeccionPlantel();
+}
 Sucursal::~Sucursal() {
 	delete clientes;
 	delete colaboradores;
@@ -40,7 +50,7 @@ void Sucursal::insertarVehiculo(Vehiculo* aux) {
 		vehiculos->insertarVehiculo(aux);
 	}
 }
-void Sucursal::insertarColabordor(Colaborador* aux) {
+void Sucursal::insertarColaborador(Colaborador* aux) {
 	if (!colaboradores) {
 		colaboradores = new ColeccionColaborador();
 		colaboradores->insertarColaborador(aux);
@@ -81,6 +91,19 @@ void Sucursal::eliminarPlantel(string identificacion) {
 		return;
 	}
 }
+Cliente* Sucursal::getCliente(string id) {
+	return clientes->getCliente(id);
+}
+Vehiculo* Sucursal::getVehiculo(string placa) {
+	return vehiculos->getVehiculo(placa);
+}
+Colaborador* Sucursal::getColaborador(string id) {
+	return colaboradores->getColaborador(id);
+}
+Plantel* Sucursal::getPlantel(string iden) {
+	return planteles->getPlantel(iden);
+}
+
 ColeccionPlantel* Sucursal::getPlanteles() { return planteles; }
 ColeccionCliente* Sucursal::getClientes() { return clientes; }
 ColeccionColaborador* Sucursal::getColaboradores() { return colaboradores; }

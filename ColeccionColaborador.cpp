@@ -56,6 +56,16 @@ bool ColeccionColaborador::buscarColaborador(string id) {
 	}
 	return false;
 }
+Colaborador* ColeccionColaborador::getColaborador(string id) {
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->getId() == id) {
+			return actual->getObj();
+		}
+		actual = actual->getSig();
+	}
+	return nullptr;
+}
 string ColeccionColaborador::toString() {
 	stringstream ss;
 	ss << "Lista de Colaboradores: " << endl;

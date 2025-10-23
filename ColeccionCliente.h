@@ -10,6 +10,7 @@ public:
 	void insertarCliente(Cliente* aux);
 	void eliminarCliente(string id);
 	bool buscarCliente(string id);
+	Cliente* getCliente(string id);
 	string toString();
 };
 

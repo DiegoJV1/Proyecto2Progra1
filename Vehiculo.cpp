@@ -1,17 +1,21 @@
 #include "Vehiculo.h"
 #include<sstream>
-Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), bitacoraEstado(nullptr), PrecioAlquiler(0.0){
+Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), PrecioAlquiler(0.0){
 	solicitudes = new ColeccionSolicitudAlquiler();
+	bitacoraEstado = new ColeccionEstado();
 }
-Vehiculo::Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, Cliente* dueno, ColeccionEstado* b): placa(placa), modelo(modelo), marca(marca), ubiPlantel(ubi), tipoLicencia(lic), dueno(dueno), bitacoraEstado(b) {
+Vehiculo::Vehiculo(string placa, string modelo, string marca, char cat, string lic, Cliente* dueno): placa(placa), modelo(modelo), marca(marca), tipoLicencia(lic), dueno(dueno) {
 	solicitudes = new ColeccionSolicitudAlquiler();
+	bitacoraEstado = new ColeccionEstado();
 	setCategoria(cat);
-	setEstado('D');
+	setEstado('A', nullptr, nullptr);
 	setPrecioAlquiler(categoria);
 }
 Vehiculo::~Vehiculo() {
 	delete bitacoraEstado;
 	bitacoraEstado = nullptr;
+	delete solicitudes;
+	solicitudes = nullptr;
 }
 void Vehiculo::setDueno(Cliente* aux) { this->dueno = aux; }
 void Vehiculo::setPlaca(string placa) { this->placa = placa; }
@@ -19,58 +23,58 @@ void Vehiculo::setModelo(string modelo) { this->modelo = modelo; }
 void Vehiculo::setMarca(string marca) { this->marca = marca; }
 void Vehiculo::setUbiPlantel(string ubi) { this->ubiPlantel = ubi; }
 void Vehiculo::setTipoLicencia(string lic) { this->tipoLicencia = lic; }
-void Vehiculo::setEstado(char est) {
+void Vehiculo::setEstado(char est, Colaborador* c, Fecha* f) {
 	switch (est) {
 	case 'A':
 		this->estado = "Disponible";
-		actualizarBitacora("Disponible");
+		actualizarBitacora("Disponible", c, f);
 		break;
 	case 'B':
 		this->estado = "Alquilado";
-		actualizarBitacora("Alquilado");
+		actualizarBitacora("Alquilado", c, f);
 		break;
 	case 'C':
 		this->estado = "Devuelto";
-		actualizarBitacora("Devuelto");
+		actualizarBitacora("Devuelto", c, f);
 		break;
 	case 'D':
 		this->estado = "Revision";
-		actualizarBitacora("Revision");
+		actualizarBitacora("Revision", c, f);
 		break;
 	case 'E':
 		this->estado = "Lavado";
-		actualizarBitacora("Lavado");
+		actualizarBitacora("Lavado", c, f);
 		break;
 	}
 }
-void Vehiculo::actualizaEstado(char est) {
+void Vehiculo::actualizaEstado(char est, Colaborador* c, Fecha* f) {
 	if (bitacoraEstado->getUltimo() == "Disponible") {
 		if (est == 'B' || est == 'D' || est == 'E') {
-			setEstado(est);
+			setEstado(est, c, f);
 		}
 		else { return; }
 	}
 	else if (bitacoraEstado->getUltimo() == "Alquilado") {
 		if (est == 'A' || est == 'C') {
-			setEstado(est);
+			setEstado(est, c, f);
 		}
 		else { return; }
 	}
 	else if (bitacoraEstado->getUltimo() == "Devuelto") {
 		if (est == 'D' || est == 'E') {
-			setEstado(est);
+			setEstado(est, c, f);
 		}
 		else { return; }
 	}
 	else if (bitacoraEstado->getUltimo() == "Revision") {
 		if (est == 'E') {
-			setEstado(est);
+			setEstado(est, c, f);
 		}
 		else { return; }
 	}
 	else if (bitacoraEstado->getUltimo() == "Lavado") {
 		if (est == 'A' || est == 'D') {
-			setEstado(est);
+			setEstado(est, c, f);
 		}
 		else { return; }
 	}
@@ -115,6 +119,11 @@ void Vehiculo::setCategoria(char cat) {
 void Vehiculo::actualizarBitacora(string est,Colaborador* c, Fecha* f) {
 	bitacoraEstado->insertarEstado(est, c, f);
 }
+void Vehiculo::insertarSolicitud(SolicitudAlquiler* aux) {
+	if (aux->getPlaca() == placa) {
+		solicitudes->insertarSolicitud(aux);
+	}
+}
 string Vehiculo::getPlaca() { return placa; }
 string Vehiculo::getModelo() { return modelo; }
 string Vehiculo::getMarca() { return marca; }
@@ -124,6 +133,7 @@ string Vehiculo::getEstado() { return estado; }
 string Vehiculo::getCategoria() { return categoria; }
 double Vehiculo::getPrecioAlquiler() { return PrecioAlquiler; }
 Cliente* Vehiculo::getDueno() { return dueno; }
+ColeccionSolicitudAlquiler* Vehiculo::getHistorialSolicitudes() { return solicitudes; }
 string Vehiculo::toStringBitacora() {
 	stringstream ss;
 	ss << bitacoraEstado->toString() << endl;

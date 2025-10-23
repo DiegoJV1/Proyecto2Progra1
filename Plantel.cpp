@@ -1,7 +1,7 @@
 #include "Plantel.h"
 #include<sstream>
 Plantel::Plantel() : identificacion("z"), tipo('0'), p(nullptr), capacidad(0), filas(0), columnas(0) {}
-Plantel::Plantel(string iden, char tipo): identificacion(iden), tipo(tipo) {
+Plantel::Plantel(string iden, char tipo, int f, int c): identificacion(iden), tipo(tipo), filas(f), columnas(c) {
 	setCapacidad();
 	p = new Estacionamiento * *[filas];
 	for (int i = 0; i < filas; i++) {
@@ -26,26 +26,7 @@ Plantel::~Plantel() {
 	tipo = '0';
 }
 void Plantel::setCapacidad() {
-	if (tipo == 1) {
-		capacidad = 6;
-		filas = 3;
-		columnas = 2;
-	}
-	else if(tipo == 2) {
-		capacidad = 30;
-		filas = 6;
-		columnas = 5;
-	}
-	else if (tipo == 3) {
-		capacidad = 20;
-		filas = 5;
-		columnas = 4;
-	}
-	else if (tipo == 4) {
-		capacidad = 25;
-		filas = 5;
-		columnas = 5;
-	}
+	capacidad = filas * columnas;
 }
 int Plantel::getCapacidad() { return capacidad; }
 void Plantel::setTipo(char tipo) { this->tipo = tipo; }

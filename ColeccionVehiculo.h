@@ -10,6 +10,7 @@ public:
 	void insertarVehiculo(Vehiculo* aux);
 	void eliminarVehiculo(string placa);
 	bool buscarVehiculo(string placa);
+	Vehiculo* getVehiculo(string placa);
 	string toString();
 };
 

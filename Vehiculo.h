@@ -11,7 +11,7 @@ private:
 	ColeccionSolicitudAlquiler* solicitudes;
 public:
 	Vehiculo();
-	Vehiculo(string placa, string modelo, string marca, string ubi, char cat, string lic, Cliente* dueno, ColeccionEstado* b);
+	Vehiculo(string placa, string modelo, string marca, char cat, string lic, Cliente* dueno);
 	~Vehiculo();
 	void setDueno(Cliente* aux);
 	void setPlaca(string placa);
@@ -19,7 +19,7 @@ public:
 	void setMarca(string marca);
 	void setUbiPlantel(string ubi);
 	void setTipoLicencia(string lic);
-	void setEstado(char est);
+	void setEstado(char est, Colaborador* c, Fecha* f);
 	void setPrecioAlquiler(string cat);
 	void setCategoria(char cat);
 	void actualizarBitacora(string est, Colaborador* c, Fecha* f);
@@ -38,6 +38,6 @@ public:
 
 	string toStringBitacora();
 	string toString();
-	void actualizaEstado(char est);
+	void actualizaEstado(char est, Colaborador* c, Fecha* f);
 };
 

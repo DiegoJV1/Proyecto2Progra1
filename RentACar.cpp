@@ -21,7 +21,7 @@ void RentACar::eliminarSucursal(string num) {
 		return;
 	}
 }
-
+ColeccionSucursal* RentACar::getSucurales() { return sucursales; }
 string RentACar::toString() {
 	stringstream ss;
 	ss << "----RentACar----" << endl;

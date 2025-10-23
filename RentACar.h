@@ -11,6 +11,7 @@ public:
 	string getNombre();
 	void insertarSucursal(Sucursal* aux);
 	void eliminarSucursal(string num);
+	ColeccionSucursal* getSucurales();
 
 	string toString();
 };

@@ -56,6 +56,16 @@ bool ColeccionSucursal::buscarSucursal(string num) {
 	}
 	return false;
 }
+Sucursal* ColeccionSucursal::getSucursal(string num) {
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->getNum() == num) {
+			return actual->getObj();
+		}
+		actual = actual->getSig();
+	}
+	return nullptr;
+}
 void ColeccionSucursal::intercambiarEntreSucursal(Vehiculo* vaux, Sucursal* saux) {
 	if (vaux->getEstado() != "Alquilado") {
 		if (buscarSucursal(saux->getNum()) == true) {

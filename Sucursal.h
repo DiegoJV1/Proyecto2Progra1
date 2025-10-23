@@ -13,7 +13,7 @@ private:
 	ColeccionColaborador* colaboradores;
 public:
 	Sucursal();
-	Sucursal(string ubi, ColeccionCliente* clien, ColeccionColaborador* col, ColeccionVehiculo* ve, ColeccionPlantel* plan, string num);
+	Sucursal(string ubi, string num);
 	~Sucursal();
 	void setNum(string num);
 	string getNum();
@@ -21,7 +21,7 @@ public:
 	string getUbicaion();
 	void insertarCliente(Cliente* aux);
 	void insertarVehiculo(Vehiculo* aux);
-	void insertarColabordor(Colaborador* aux);
+	void insertarColaborador(Colaborador* aux);
 	void insertarPlantel(Plantel* aux);
 	ColeccionPlantel* getPlanteles();
 	ColeccionCliente* getClientes();
@@ -31,6 +31,11 @@ public:
 	void eliminarVehiculo(string placa);
 	void eliminarColaborador(string id);
 	void eliminarPlantel(string iden);
+
+	Cliente* getCliente(string id);
+	Vehiculo* getVehiculo(string placa);
+	Colaborador* getColaborador(string id);
+	Plantel* getPlantel(string iden);
 
 	string recomendacionDePlantel();
 	string toString();

@@ -12,6 +12,7 @@ public:
 	bool buscarPlantel(string iden);
 	Plantel* buscarPlantelPorVehiculo(string placa);
 	string plantelRecomendado();
+	Plantel* getPlantel(string iden);
 	string toString();
 };
 

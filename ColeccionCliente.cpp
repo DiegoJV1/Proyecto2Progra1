@@ -56,6 +56,16 @@ bool ColeccionCliente::buscarCliente(string id) {
 	}
 	return false;
 }
+Cliente* ColeccionCliente::getCliente(string id) {
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->getId() == id) {
+			return actual->getObj();
+		}
+		actual = actual->getSig();
+	}
+	return nullptr;
+}
 string ColeccionCliente::toString() {
 	stringstream ss;
 	ss << "Lista de Clientes: " << endl;
