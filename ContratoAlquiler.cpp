@@ -25,3 +25,6 @@ void ContratoAlquiler::setEstado(int nuevoEstado) {
     }
     }
 }
+void ContratoAlquiler::setPrecioTotal(float pre) {
+    precioTotal = pre;
+}

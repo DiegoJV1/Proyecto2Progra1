@@ -641,7 +641,7 @@ void Menu::ejecutar() {
 				cout << "2-Visualizacion de solicitud" << endl;
 				cout << "3-Aprobacion o rechazo de solicitud de alquiler" << endl;
 				cout << "5-Recepcion del vehiculo en alquiler y finalizacion del contrato" << endl;
-				cout << "6-Volver" << endl;
+				cout << "4-Volver" << endl;
 				cout << "Digite el numero de la opcion seleccionada:" << endl;
 				cin >> opcion2;
 				switch (opcion2) {
@@ -749,13 +749,122 @@ void Menu::ejecutar() {
 					cout<<negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->toString();
 				}
 				case 3: {
+					cout << "       APROBACION O RECHAZO DE SOLICITUD DE ALQUILER       " << endl;
+					string cod, idSucursal;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						break;
+
+					}
+					cout << "Digte el codigo de la solicitud de alquiler o contrato: " << endl;
+					cin >> cod;
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod) == nullptr) {
+						cout << "ERROR: No existe la solicitud o contrato" << endl;
+						break;
+
+					}
+					
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->esSolicitud(cod)) {
+						SolicitudAlquiler* solicitud = negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod);
+						int estado = -1;
+						cout << "  CAMBIO DE ESTADO (Solicitud: " << cod << ")" << endl;
+						cout << "  Estado actual: " << solicitud->getEstado() << endl;
+						cout << "--------------------------------------------------" << endl;
+
+						cout << "Seleccione el nuevo estado:" << endl;
+						cout << "1. APROBADA" << endl;
+						cout << "2. PENDIENTE" << endl;
+						cout << "3. RECHAZADA" << endl;
+						cout << "4. ANULADA" << endl;
+						cout << "Opcion: ";
+						cin >> estado;
+						if (estado >= 1 && estado <= 4) {
+							solicitud->setEstado(estado);
+							cout << "-> Estado actualizado a: " << solicitud->getEstado() << endl;
+							if (solicitud->getEstado() == "aprobada") {
+								negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->cambiarAContrato(cod);
+								bool cambioRealizado = false;
+								while (!cambioRealizado) {
+									cout << "La Solicitud ha pasado a ser un Contrato" << endl;
+									cout << "Actualice el estado del contrato" << endl;
+									cout << "Seleccione el nuevo estado:" << endl;
+									cout << "1. Aprobado en alquiler" << endl;
+									cout << "2. Aprobado pendiente de ejecucion" << endl;
+									cout << "Opcion: ";
+									cin >> estado;
+									if (estado == 1 || estado == 2) {
+										solicitud->setEstado(estado);
+										cambioRealizado = true;
+									}
+									else {
+										cout << "ERROR: Numero fuera del rango, vuelva a intentar" << endl;
+									}
+								}
+							}
 
 
+						}
+						else{
+							cout << "ERROR: Opcion fuera de rango." << endl;
+						}
+					}
+					else {
+						ContratoAlquiler* contrato = negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod);
+						int estado = -1;
+						cout << "  CAMBIO DE ESTADO (Contrato: " << cod << ")" << endl;
+						cout << "  Estado actual: " << contrato->getEstado() << endl;
+						cout << "--------------------------------------------------" << endl;
+
+						cout << "Seleccione el nuevo estado:" << endl;
+						cout << "1. Aprobado en alquiler" << endl;
+						cout << "2. Aprobado pendiente de ejecucion" << endl;
+						cout << "3. Finalizado con multa" << endl;
+						cout << "4. Finalizado con reintegro" << endl;
+						cout << "5. Finalizado sin vargos adicionales" << endl;
+						cout << "Opcion: ";
+						cin >> estado;
+						if (estado >= 1 && estado <= 5) {
+							contrato->setEstado(estado);
+							cout << "-> Estado actualizado a: " << contrato->getEstado() << endl;
+							if (estado ==3 ) {
+								int diasDeMas = -1;
+								while (diasDeMas<1) {
+									float precioDia, precioActual, precioMas;
+									cout << "Digite cuantos dias de mas uso el vehiculo: "; cin >> diasDeMas;
+									precioDia = contrato->getPrecioDia();
+									precioActual = contrato->getPrecioTotal();
+									precioMas = diasDeMas * (precioDia * 1.3);
+									contrato->setPrecioTotal(precioActual + precioMas);
+								}
+							}
+							if (estado == 4) {
+								int diasDeMenos = -1;
+								while (diasDeMenos < 1) {
+									float precioDia, precioActual, precioMenos;
+									cout << "Digite cuantos dias de menos uso el vehiculo: "; cin >> diasDeMenos;
+									precioDia = contrato->getPrecioDia();
+									precioActual = contrato->getPrecioTotal();
+									precioMenos = diasDeMenos * (precioDia * 0.7);
+									contrato->setPrecioTotal(precioActual - precioMenos);
+								}
+							}
+
+
+						}
+						else {
+							cout << "ERROR: Opcion fuera de rango." << endl;
+						}
+
+					}
 				}
 			}
 		
 		}
+		case 4: {
 
+		}
 
 
 	}

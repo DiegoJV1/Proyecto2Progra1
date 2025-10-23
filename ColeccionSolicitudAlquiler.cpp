@@ -27,6 +27,25 @@ void ColeccionSolicitudAlquiler::insertarSolicitud(SolicitudAlquiler* aux) {
 			actual->setSig(nuevo);
 		}
 }
+bool ColeccionSolicitudAlquiler::esSolicitud(string cod) {
+	if (!inicio) {
+		cout << "ERROR: No existe la coleccion" << endl;
+		return false;
+	}
+	actual = inicio;
+	while (actual) {
+		if (actual->getObj()->getCodigo() == cod) {
+			string estado = actual->getObj()->getEstado();
+			if (estado == "aprobada" || estado == "pendiente" || estado == "rechazada" || estado == "anulada") {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		actual = actual->getSig();
+	}
+}
 
 SolicitudAlquiler* ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	actual = inicio;
@@ -38,8 +57,8 @@ SolicitudAlquiler* ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	}
 	return nullptr;
 }
-bool ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
-	if (inicio == nullptr)return false;
+void ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
+	if (inicio == nullptr)return;
 	actual = inicio;
 	while (actual) {
 		if (actual->getObj()->getCodigo() == cod) {
@@ -47,13 +66,14 @@ bool ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
 				ContratoAlquiler* pasaAContrato = new ContratoAlquiler(actual->getObj()->getCodigo(), actual->getObj()->getIdCliente(), actual->getObj()->getIdColaborador(), actual->getObj()->getIdSucursal(), actual->getObj()->getPlaca(), actual->getObj()->getCanDias(), actual->getObj()->getInicio(), actual->getObj()->getEntrega(), actual->getObj()->getPrecioDia());
 				delete actual->getObj();
 				this->actual->setObj(pasaAContrato);
-				return true;
+				
+				return;
 			}
-			if (actual->getObj()->getEstado() != "aprobada") return false;
+			if (actual->getObj()->getEstado() != "aprobada") return;
 		}
 		actual = actual->getSig();
 	}
-	return false;
+	return;
 }
 string ColeccionSolicitudAlquiler::toString() {
 	stringstream ss;
