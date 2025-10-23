@@ -125,7 +125,6 @@ ColeccionColaborador* Sucursal::getColaboradores() { return colaboradores; }
 ColeccionVehiculo* Sucursal::getVehiculos() { return vehiculos; }
 ColeccionSolicitudAlquiler* Sucursal::getSolicitudes() { return solicitudes; }
 
-
 string Sucursal::recomendacionDePlantel() {
 	if (planteles) {
 		return planteles->plantelRecomendado();

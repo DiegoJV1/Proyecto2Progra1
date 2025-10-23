@@ -66,6 +66,30 @@ Cliente* ColeccionCliente::getCliente(string id) {
 	}
 	return nullptr;
 }
+
+void ColeccionCliente::OrdenarClientes() {
+	if (inicio==nullptr)return;
+	NodoCliente* nuevoInicio = nullptr;
+	actual = inicio;
+	while (actual) {
+		NodoCliente* siguiente = actual->getSig();
+		if (!nuevoInicio || nuevoInicio->getObj()->getCantidadDeSolicitudes() > actual->getObj()->getCantidadDeSolicitudes()) {
+			actual->setSig(nuevoInicio);
+			nuevoInicio = actual;
+		}
+		else {
+			NodoCliente* s = nuevoInicio;
+			while (s->getSig() && s->getSig()->getObj()->getCantidadDeSolicitudes() <= actual->getObj()->getCantidadDeSolicitudes()) {
+				s = s->getSig();
+			}
+			actual->setSig(s->getSig());
+			s->setSig(actual);
+		}
+		actual = siguiente;
+	}
+	inicio = nuevoInicio;
+
+}
 string ColeccionCliente::toString() {
 	stringstream ss;
 	ss << "Lista de Clientes: " << endl;

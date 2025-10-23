@@ -41,7 +41,6 @@ public:
 	Plantel* getPlantel(string iden);
 	SolicitudAlquiler* getSolicitud(string cod);
 
-
 	string recomendacionDePlantel();
 	string toString();
 

@@ -6,6 +6,7 @@ class Cliente{
 protected:
 	string id, nombre, residencia;
 	ColeccionSolicitudAlquiler* solicitudes;
+	int contador;
 public:
 	Cliente();
 	Cliente(string id, string nom, string resi);
@@ -19,6 +20,7 @@ public:
 	string getId();
 	string getNombre();
 	string getResidencia();
+	int getCantidadDeSolicitudes();
 	ColeccionSolicitudAlquiler* getHistorialAlquiler();
 
 	virtual string toString();

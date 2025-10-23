@@ -11,6 +11,10 @@ public:
 	void eliminarCliente(string id);
 	bool buscarCliente(string id);
 	Cliente* getCliente(string id);
+
+	void OrdenarClientes();
+
+
 	string toString();
 };
 
