@@ -23,10 +23,13 @@ public:
 	void insertarVehiculo(Vehiculo* aux, string cod, int num1, int num2);
 	Estacionamiento* buscarEstacionamientoPorVehiculo(string placa);
 	bool buscarVehiculo(string placa);
+	void insertarDisponible(Vehiculo* aux);
+	void eliminarVehiculo(string placa);
 
 	string recomendacionDeEstacionamiento();
 	int espaciosLibres();
 	string toString();
-	//hijsdfhkjhn
+	Vehiculo* buscarVehiculoPorCodigo(string cod);
+
 };
 

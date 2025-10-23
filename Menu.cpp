@@ -304,17 +304,15 @@ void Menu::ejecutar() {
 			}
 		}
 		case 2: {
-			while (opcion2 !=9) {
+			while (opcion2 !=7) {
 				cout << "----Planteles, Parqueos y Vehiculos----" << endl;
 				cout << "1-Creacion de Plantel" << endl;
 				cout << "2-Vehiculos por Sucursal" << endl;
 				cout << "3-Reubicacion de Vehiculo (dentro de su sucursal)" << endl;
-				cout << "4-Reportes de Cliente" << endl;
-				cout << "5-Reportes de Planteles y Vehiculos" << endl;
-				cout << "6-Visualizacion de Plantel" << endl;
-				cout << "7-Cambio del Estado del Vehiculo" << endl;
-				cout << "8-Traslado de Vehiculo a otra Sucursal" << endl;
-				cout << "9-Volver" << endl;
+				cout << "4-Visualizacion de los estacionamientos" << endl;
+				cout << "5-Cambio de Estado de un Vehiculo" << endl;
+				cout << "6-Traslado de un Vehiculo (de una sucursal a otra)" << endl; //opcional
+				cout << "7-Volver" << endl;
 				cout << "Digite el numero de la opcion seleccionada:" << endl;
 				cin >> opcion2;
 				switch (opcion2) {
@@ -365,7 +363,7 @@ void Menu::ejecutar() {
 						cout << "1-Ingreso de Vehiculo" << endl;
 						cout << "2-Eliminar Vehiculo" << endl;
 						cout << "3-Visualizacion de Vehiculo" << endl;
-						cout << "4-Reportes de Cliente" << endl;
+						cout << "4-Volver" << endl;
 						cin >> opcion3;
 						switch (opcion3) {
 						case 1: {
@@ -404,6 +402,7 @@ void Menu::ejecutar() {
 							cout << "Digite el modelo del Vehiculo: " << endl;
 							cin.ignore();
 							getline(cin, modelo);
+							cin.ignore();
 							while (categoria != 'A' || categoria != 'B' || categoria != 'C' || categoria != 'D') {
 								cout << "A-Economico" << endl;
 								cout << "B-Estandar" << endl;
@@ -429,10 +428,209 @@ void Menu::ejecutar() {
 							cout << "Digite el indice de la columna del estacionamiento: " << endl;
 							cin >> ubi2;
 							Vehiculo* nuevo = new Vehiculo(placa, modelo, marca, categoria, licencia, negocio->getSucurales()->getSucursal(num)->getCliente(ced));
-							negocio->getSucurales()->getSucursal(num)->getPlantel(plantel)->insertarVehiculo(nuevo,plantel,ubi1,ubi2);
-
+							negocio->getSucurales()->getSucursal(num)->getPlantel(plantel)->insertarVehiculo(nuevo, plantel, ubi1, ubi2);
+							system("pause");
+							system("cls");
+							break;
+						}
+						case 2: {
+							string num;
+							cout << "Digite el codigo de la Sucursal: " << endl;
+							cin >> num;
+							if (negocio->getSucurales()->buscarSucursal(num) == false) {
+								cout << "ERROR-Sucursal no existente" << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+							string placa;
+							cout << "Digite la placa del Vehiculo: " << endl;
+							cin >> placa;
+							if (negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)) {
+								negocio->getSucurales()->getSucursal(num)->eliminarVehiculo(placa);
+								cout << "Vehiculo eliminado con exito! " << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+							else {
+								cout << "ERROR-Vehiculo no existente" << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+						}
+						case 3: {
+							string num;
+							cout << "Digite el codigo de la Sucursal: " << endl;
+							cin >> num;
+							if (negocio->getSucurales()->buscarSucursal(num) == false) {
+								cout << "ERROR-Sucursal no existente" << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+							string placa;
+							cout << "Digite la placa del Vehiculo: " << endl;
+							cin >> placa;
+							if (negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)) {
+								cout << negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)->toString() << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+							else {
+								cout << "ERROR-Vehiculo no existente" << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
 						}
 						}
+					}
+				}
+				case 3: {
+					cout << "----Reubicacion de Vehiculo (dentro de su sucursal)----" << endl;
+					string num;
+					cout << "Digite el codigo de la Sucursal en la que se encuentra el vehiculo: " << endl;
+					cin >> num;
+					if (negocio->getSucurales()->buscarSucursal(num) == false) {
+						cout << "ERROR-Sucursal no existente" << endl;
+						system("pause");
+						system("cls");
+						break;
+					}
+					else {
+						string placa;
+						cout << "Digite la placa del Vehiculo a reubicar: " << endl;
+						cin >> placa;
+						if (negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)) {
+							if (negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)->getEstado() != "Alquilado") {
+								Vehiculo* cambio = negocio->getSucurales()->getSucursal(num)->getVehiculo(placa);
+								string ide;
+								cout << "Digite el codigo del Plantel al que se le desea reubicar: " << endl;
+								cin >> ide;
+								if (negocio->getSucurales()->getSucursal(num)->getPlantel(ide)) {
+									negocio->getSucurales()->getSucursal(num)->getPlantel(ide)->insertarDisponible(cambio);
+									negocio->getSucurales()->getSucursal(num)->getPlantel(ide)->eliminarVehiculo(cambio->getPlaca());
+									system("pause");
+									system("cls");
+									break;
+								}
+								else {
+									cout << "ERROR-Plantel no existente" << endl;
+									system("pause");
+									system("cls");
+									break;
+								}
+							}
+							else {
+								cout << "ERROR-Vehiculo Alquilado" << endl;
+								system("pause");
+								system("cls");
+								break;
+							}
+						}
+						else {
+							cout << "ERROR-Vehiculo no existente" << endl;
+							system("pause");
+							system("cls");
+							break;
+						}
+					}
+				}
+				case 4: {
+					string num;
+					cout << "Digite el codigo de la Sucursal: " << endl;
+					cin >> num;
+					if (negocio->getSucurales()->buscarSucursal(num) == false) {
+						cout << "ERROR-Sucursal no existente" << endl;
+						system("pause");
+						system("cls");
+						break;
+					}
+					string cod;
+					cout << "Digite la identificacion del Plantel: " << endl;
+					cin >> cod;
+					if (!negocio->getSucurales()->getSucursal(num)->getPlantel(cod)) {
+						cout << "ERROR-Plantel no existente" << endl;
+						system("pause");
+						system("cls");
+						break;
+					}
+					else {
+						cout << "---Visualizacion del Plantel---" << endl;
+						cout << negocio->getSucurales()->getSucursal(num)->getPlantel(cod)->toString() << endl;
+						string ide;
+						cout << "Digite el codigo del estacionamiento con el vehiculo a visualizar:" << endl;
+						cin >> ide;
+						if (negocio->getSucurales()->getSucursal(num)->getPlantel(cod)->buscarVehiculoPorCodigo(ide)) {
+							cout <<negocio->getSucurales()->getSucursal(num)->getPlantel(cod)->buscarVehiculoPorCodigo(ide)->toString() << endl;
+							system("pause");
+							system("cls");
+							break;
+						}
+						else {
+							cout << "ERROR-Estacionamiento Disponible" << endl;
+							system("pause");
+							system("cls");
+							break;
+						}
+					}
+				}
+				case 5: {
+					string num;
+					cout << "Digite el codigo de la Sucursal: " << endl;
+					cin >> num;
+					if (negocio->getSucurales()->buscarSucursal(num) == false) {
+						cout << "ERROR-Sucursal no existente" << endl;
+						system("pause");
+						system("cls");
+						break;
+					}
+					string placa;
+					cout << "Digite la placa del Vehiculo: " << endl;
+					cin >> placa;
+					if (negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)) {
+						char estado;
+						do {
+							cout << "Digite la letra del estado seleccionado del vehiculo:" << endl;
+							cout << "A-Ingreso de Vehiculo" << endl;
+							cout << "B-Eliminar Vehiculo" << endl;
+							cout << "C-Visualizacion de Vehiculo" << endl;
+							cout << "D-Volver" << endl;
+							cout << "E-Volver" << endl;
+							cin >> estado;
+						} while (estado != 'A' || estado != 'B' || estado != 'C' || estado != 'D' || estado != 'E');
+						string id;
+						cout << "Digite el id del colaborador encargado del cambio:" << endl;
+						cin >> id;
+						if (negocio->getSucurales()->getSucursal(num)->getColaborador(id)) {
+							int dia, mes, annio;
+							cout << "Digite el numero del dia del cambio:" << endl;
+							cin >> dia;
+							cout << "Digite el numero del mes del cambio:" << endl;
+							cin >> mes;
+							cout << "Digite el annio del cambio:" << endl;
+							cin >> annio;
+							Fecha* nueva = new Fecha(dia, mes, annio);
+							negocio->getSucurales()->getSucursal(num)->getVehiculo(placa)->actualizaEstado(estado, negocio->getSucurales()->getSucursal(num)->getColaborador(id), nueva);
+							system("pause");
+							system("cls");
+							break;
+						}
+						else {
+							cout << "ERROR-Colaborador no existente" << endl;
+							system("pause");
+							system("cls");
+							break;
+						}
+					}
+					else {
+						cout << "ERROR-Vehiculo no existente" << endl;
+						system("pause");
+						system("cls");
+						break;
 					}
 				}
 				}

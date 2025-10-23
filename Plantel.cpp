@@ -7,7 +7,7 @@ Plantel::Plantel(string iden, char tipo, int f, int c): identificacion(iden), ti
 	for (int i = 0; i < filas; i++) {
 		p[i] = new Estacionamiento * [columnas];
 		for (int j = 0; j < columnas; j++) {
-			p[i][j] = nullptr;
+			p[i][j] =new Estacionamiento();
 		}
 	}
 	setCodigosEstacionamientos();
@@ -47,6 +47,26 @@ void Plantel::insertarVehiculo(Vehiculo* aux, string cod, int num1, int num2){
 	else if (p[num1][num2]->getV() && p[num1][num2]->getEstado() == true) { return; }
 	else {
 		p[num1][num2]->setV(aux);
+		p[num1][num2]->getV()->setUbiPlantel(p[num1][num2]->getCodigoNum());
+	}
+}
+void Plantel::insertarDisponible(Vehiculo* aux) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (!p[i][j]->getV()) {
+				p[i][j]->setV(aux);
+				p[i][j]->getV()->setUbiPlantel(p[i][j]->getCodigoNum());
+			}
+		}
+	}
+}
+void Plantel::eliminarVehiculo(string placa) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (p[i][j]->getV()->getPlaca()==placa) {
+				p[i][j]->setV(nullptr);
+			}
+		}
 	}
 }
 string Plantel::recomendacionDeEstacionamiento(){
@@ -235,6 +255,15 @@ Estacionamiento* Plantel::buscarEstacionamientoPorVehiculo(string placa) {
 		for (int j = 0; j < columnas; j++) {
 			if (p[i][j] && p[i][j]->getV()->getPlaca() ==placa ) {
 				p[i][j]->setEstado('D');
+			}
+		}
+	}
+}
+Vehiculo* Plantel::buscarVehiculoPorCodigo(string cod) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (p[i][j]->getCodigoNum()==cod && p[i][j]->getV()) {
+				return p[i][j]->getV();
 			}
 		}
 	}
