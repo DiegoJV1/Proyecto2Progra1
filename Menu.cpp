@@ -635,6 +635,127 @@ void Menu::ejecutar() {
 				}
 			}
 		}
+		case 3: {
+			while(opcion2!=6){
+				cout << "1-Creacion de solicitud" << endl;
+				cout << "2-Visualizacion de solicitud" << endl;
+				cout << "3-Aprobacion o rechazo de solicitud de alquiler" << endl;
+				cout << "5-Recepcion del vehiculo en alquiler y finalizacion del contrato" << endl;
+				cout << "6-Volver" << endl;
+				cout << "Digite el numero de la opcion seleccionada:" << endl;
+				cin >> opcion2;
+				switch (opcion2) {
+				case 1: {
+					cout << "       CREACIÓN DE NUEVA SOLICITUD DE ALQUILER    " << endl;
+					int dia, mes, annio;
+					cout << "Ingrese Fecha de Inicio" << endl;
+					cout << "Dia: ";
+					cin >> dia;
+					cout << "Mes: ";
+					cin >> mes;
+					cout << "Anio: ";
+					cin >> annio;
+					Fecha* inicio = new Fecha(dia, mes, annio);
+					cout << "Ingrese Fecha de Entrga" << endl;
+					cout << "Dia: ";
+					cin >> dia;
+					cout << "Mes: ";
+					cin >> mes;
+					cout << "Anio: ";
+					cin >> annio;
+					Fecha* entrega = new Fecha(dia, mes, annio);
+
+					string codigo, idCliente, idColaborador, idSucursal, placa;
+					int canDias;
+					float precioDia;
+					cout << "Codigo (ID Unico): ";
+					cin >> codigo;
+					cout << "ID Cliente: ";
+					cin >> idCliente;
+					cout << "ID Colaborador Responsable: ";
+					cin >> idColaborador;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					cout << "Placa del Vehiculo: ";
+					cin >> placa;
+					if (negocio->getSucurales()->getSucursal(idSucursal)==nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						delete inicio;
+						delete entrega;
+						break;
+					}
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getCliente(idCliente) == nullptr) {
+						cout << "ERROR: No existe el cliente" << endl;
+						delete inicio;
+						delete entrega;
+						break;
+
+					}
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getColaborador(idColaborador) == nullptr) {
+						cout << "ERROR: No existe el colaborador" << endl;
+						delete inicio;
+						delete entrega;
+						break;
+
+					}
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa) == nullptr) {
+						cout << "ERROR: No existe el vehiculo" << endl;
+						delete inicio;
+						delete entrega;
+						break;
+
+					}
+
+					cout << "Cantidad de Dias de Alquiler: ";
+					cin >> canDias;
+					cout << "Precio por Dia de Alquiler: ";
+					cin >> precioDia;
+					SolicitudAlquiler* nuevaSolicitud = new SolicitudAlquiler(
+						codigo,
+						idCliente,
+						idColaborador,
+						idSucursal,
+						placa,
+						canDias,
+						inicio,
+						entrega,
+						precioDia
+					);
+					negocio->getSucurales()->getSucursal(idSucursal)->insertarSolicitud(nuevaSolicitud);
+					negocio->getSucurales()->getSucursal(idSucursal)->getCliente(idCliente)->insertarSolicitud(nuevaSolicitud);
+					negocio->getSucurales()->getSucursal(idSucursal)->getColaborador(idColaborador)->insertarTrabajo(nuevaSolicitud);
+					negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa)->insertarSolicitud(nuevaSolicitud);
+					cout << "-> Solicitud:  " << codigo << " creada exitosamente (Estado: pendiente)." << endl;
+					break;
+
+				}
+				case 2: {
+					cout << "       VISUALIZACION DE SOLCITUD DE ALQUILER       " << endl;
+					string cod, idSucursal;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						break;
+
+					}
+					cout << "Digte el codigo de la solicitud de alquiler o contrato: " << endl;
+					cin >> cod;
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod) == nullptr) {
+						cout << "ERROR: No existe la solicitud" << endl;
+						break;
+
+					}
+					cout<<negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->toString();
+				}
+				case 3: {
+
+
+				}
+			}
+		
+		}
+
 
 
 	}

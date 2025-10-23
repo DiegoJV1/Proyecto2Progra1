@@ -62,6 +62,10 @@ void SolicitudAlquiler::setPrecioDia(float nuevoPDia) {
 }
 
 void SolicitudAlquiler::setEstado(int nuevoEstado) {
+    if (estado == "rechazada" || estado == "anulada") {
+        cout << "ERROR: La solicitud ha sido rechazada o anulada, ya no podra cambiar su estado" << endl;
+        return;
+    }
     switch (nuevoEstado) {
         case 1: {
             estado = "aprobada";

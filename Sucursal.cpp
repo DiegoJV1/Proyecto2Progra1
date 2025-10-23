@@ -5,18 +5,21 @@ Sucursal::Sucursal() : ubicacion(""), num("") {
 	colaboradores = new ColeccionColaborador();
 	vehiculos = new ColeccionVehiculo();
 	planteles = new ColeccionPlantel();
+	solicitudes = new ColeccionSolicitudAlquiler();
 }
 Sucursal::Sucursal(string ubi, string num) : ubicacion(ubi), num(num) {
 	clientes = new ColeccionCliente();
 	colaboradores = new ColeccionColaborador();
 	vehiculos = new ColeccionVehiculo();
 	planteles = new ColeccionPlantel();
+	solicitudes = new ColeccionSolicitudAlquiler();
 }
 Sucursal::~Sucursal() {
 	delete clientes;
 	delete colaboradores;
 	delete vehiculos;
 	delete planteles;
+	delete solicitudes;
 }
 void Sucursal::setNum(string num) { this->num = num; }
 string Sucursal::getNum() { return num; }
@@ -57,6 +60,15 @@ void Sucursal::insertarColaborador(Colaborador* aux) {
 	}
 	else {
 		colaboradores->insertarColaborador(aux);
+	}
+}
+void Sucursal::insertarSolicitud(SolicitudAlquiler* aux) {
+	if (solicitudes) {
+		solicitudes = new ColeccionSolicitudAlquiler();
+		solicitudes->insertarSolicitud(aux);
+	}
+	else {
+		solicitudes->insertarSolicitud(aux);
 	}
 }
 void Sucursal::eliminarCliente(string id) {
@@ -103,11 +115,16 @@ Colaborador* Sucursal::getColaborador(string id) {
 Plantel* Sucursal::getPlantel(string iden) {
 	return planteles->getPlantel(iden);
 }
+SolicitudAlquiler* Sucursal::getSolicitud(string cod) {
+	return solicitudes->buscarSolicitud(cod);
+}
 
 ColeccionPlantel* Sucursal::getPlanteles() { return planteles; }
 ColeccionCliente* Sucursal::getClientes() { return clientes; }
 ColeccionColaborador* Sucursal::getColaboradores() { return colaboradores; }
 ColeccionVehiculo* Sucursal::getVehiculos() { return vehiculos; }
+ColeccionSolicitudAlquiler* Sucursal::getSolicitudes() { return solicitudes; }
+
 
 string Sucursal::recomendacionDePlantel() {
 	if (planteles) {

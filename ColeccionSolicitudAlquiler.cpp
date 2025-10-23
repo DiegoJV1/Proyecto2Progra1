@@ -10,30 +10,33 @@ ColeccionSolicitudAlquiler::~ColeccionSolicitudAlquiler() {
 	}
 }
 void ColeccionSolicitudAlquiler::insertarSolicitud(SolicitudAlquiler* aux) {
-	if (buscarSolicitud(aux->getCodigo()) == true) { return; }
-	else {
 		NodoSolicitudAlquiler* nuevo = new NodoSolicitudAlquiler(aux);
-		if (!inicio) { inicio = nuevo; }
+		if (!inicio) { 
+			inicio = nuevo; 
+			return;
+		}
 		else {
 			actual = inicio;
 			while (actual->getSig()) {
-				if (actual->getObj()->getCodigo() == aux->getCodigo())return;
+				if (actual->getObj()->getCodigo() == aux->getCodigo()) {
+					cout << "ERROR: Ya existe la solicitud" << endl;
+					return;
+				}
 				actual = actual->getSig();
 			}
 			actual->setSig(nuevo);
 		}
-	}
 }
 
-bool ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
+SolicitudAlquiler* ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	actual = inicio;
 	while (actual) {
 		if (actual->getObj()->getCodigo() == cod) {
-			return true;
+			return actual->getObj();
 		}
 		actual = actual->getSig();
 	}
-	return false;
+	return nullptr;
 }
 bool ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
 	if (inicio == nullptr)return false;
