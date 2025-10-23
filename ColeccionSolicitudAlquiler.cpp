@@ -17,6 +17,7 @@ void ColeccionSolicitudAlquiler::insertarSolicitud(SolicitudAlquiler* aux) {
 		else {
 			actual = inicio;
 			while (actual->getSig()) {
+				if (actual->getObj()->getCodigo() == aux->getCodigo())return;
 				actual = actual->getSig();
 			}
 			actual->setSig(nuevo);
@@ -35,13 +36,21 @@ bool ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	return false;
 }
 bool ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
+	if (inicio == nullptr)return false;
+	actual = inicio;
 	while (actual) {
 		if (actual->getObj()->getCodigo() == cod) {
 			if (actual->getObj()->getEstado() == "aprobada") {
-				ContratoAlquiler* pasaAContrato=new ContratoAlquiler(actual->getObj()->getCodigo(), string idCte, string idCol, string idSuc, string pl, int dias, Fecha * ini, Fecha * ent, float pDia)
+				ContratoAlquiler* pasaAContrato = new ContratoAlquiler(actual->getObj()->getCodigo(), actual->getObj()->getIdCliente(), actual->getObj()->getIdColaborador(), actual->getObj()->getIdSucursal(), actual->getObj()->getPlaca(), actual->getObj()->getCanDias(), actual->getObj()->getInicio(), actual->getObj()->getEntrega(), actual->getObj()->getPrecioDia());
+				delete actual->getObj();
+				this->actual->setObj(pasaAContrato);
+				return true;
 			}
+			if (actual->getObj()->getEstado() != "aprobada") return false;
 		}
+		actual = actual->getSig();
 	}
+	return false;
 }
 string ColeccionSolicitudAlquiler::toString() {
 	stringstream ss;

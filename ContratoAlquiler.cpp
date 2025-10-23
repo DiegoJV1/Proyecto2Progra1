@@ -1,7 +1,7 @@
 #include "ContratoAlquiler.h"
 ContratoAlquiler::ContratoAlquiler() :SolicitudAlquiler() {}
 ContratoAlquiler::ContratoAlquiler(string cod, string idCte, string idCol, string idSuc, string pl, int dias, Fecha* ini, Fecha* ent, float pDia) : SolicitudAlquiler(cod, idCte, idCol, idSuc, pl, dias, ini, ent, pDia) {}
-void ContratoAlquiler::setEstado(char nuevoEstado) {
+void ContratoAlquiler::setEstado(int nuevoEstado) {
     switch (nuevoEstado) {
     case 1: {
         estado = "aprobado en alquiler";

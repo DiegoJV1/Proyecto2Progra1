@@ -4,8 +4,6 @@ NodoSolicitudAlquiler::NodoSolicitudAlquiler(SolicitudAlquiler* aux) :obj(aux), 
 NodoSolicitudAlquiler::~NodoSolicitudAlquiler() {
 	delete obj;
 	obj = nullptr;
-	delete sig;
-	sig = nullptr;
 }
 void NodoSolicitudAlquiler::setObj(SolicitudAlquiler* aux) { this->obj = aux; }
 void NodoSolicitudAlquiler::setSig(NodoSolicitudAlquiler* aux) { this->sig = aux; }
