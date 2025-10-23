@@ -9,6 +9,8 @@ public:
 	~ColeccionSolicitudAlquiler();
 	void insertarSolicitud(SolicitudAlquiler* aux);
 	bool buscarSolicitud(string cod);
+
+	bool cambiarAContrato(string cod);
 	string toString();
 };
 

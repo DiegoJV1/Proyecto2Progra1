@@ -42,7 +42,7 @@ public:
 	void setPrecioDia(float);
 
 	void calcularPrecioTotal();
-	virtual void setEstado(char nuevoEstado);
+	virtual void setEstado(int nuevoEstado);
 	virtual string toString();
 };
 

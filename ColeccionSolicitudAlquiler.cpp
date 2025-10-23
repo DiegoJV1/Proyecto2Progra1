@@ -34,6 +34,15 @@ bool ColeccionSolicitudAlquiler::buscarSolicitud(string cod) {
 	}
 	return false;
 }
+bool ColeccionSolicitudAlquiler::cambiarAContrato(string cod) {
+	while (actual) {
+		if (actual->getObj()->getCodigo() == cod) {
+			if (actual->getObj()->getEstado() == "aprobada") {
+				ContratoAlquiler* pasaAContrato=new ContratoAlquiler(actual->getObj()->getCodigo(), string idCte, string idCol, string idSuc, string pl, int dias, Fecha * ini, Fecha * ent, float pDia)
+			}
+		}
+	}
+}
 string ColeccionSolicitudAlquiler::toString() {
 	stringstream ss;
 	ss << "Lista de Contratos/Solicitudes de alquiler: " << endl;

@@ -61,7 +61,25 @@ void SolicitudAlquiler::setPrecioDia(float nuevoPDia) {
     calcularPrecioTotal();
 }
 
-void SolicitudAlquiler::setEstado(char nuevoEstado) {
+void SolicitudAlquiler::setEstado(int nuevoEstado) {
+    switch (nuevoEstado) {
+        case 1: {
+            estado = "aprobada";
+            break;
+        }
+        case 2 : {
+            estado = "pendiente";
+            break;
+        }
+        case 3 : {
+            estado = "rechazada";
+            break;
+        }
+        case 4 : {
+            estado = "anulada";
+            break;
+        }
+    }
 }
 string SolicitudAlquiler::toString() {
     stringstream ss;
