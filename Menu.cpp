@@ -1027,8 +1027,16 @@ void Menu::ejecutar() {
 			cout << "Digite el numero de la opcion seleccionada:" << endl;
 			cin >> opcion2;
 			switch (opcion2) {
+			case 1: {
 				cout << "1-Visualizacion de todos los contratos por sucursal(del mas reciente al mas antiguo)" << endl;
-
+				string idSucursal;
+				cout << "ID Sucursal: ";
+				cin >> idSucursal;
+				if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+					cout << "ERROR: No existe la sucursal" << endl;
+					break;
+				}
+			}
 			}
 
 		}
