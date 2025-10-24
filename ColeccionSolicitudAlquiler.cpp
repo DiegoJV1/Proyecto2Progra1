@@ -103,32 +103,21 @@ void ColeccionSolicitudAlquiler::ordenarSolicitudes() {
 	if (inicio == nullptr || inicio->getSig() == nullptr) return;
 
 	NodoSolicitudAlquiler* nuevoInicio = nullptr;
-	NodoSolicitudAlquiler* actual = inicio;
+	actual = inicio;
 
 	while (actual) {
 		NodoSolicitudAlquiler* siguiente = actual->getSig();
-
-		// Puntero a la fecha del nodo actual
 		Fecha* fechaActual = actual->getObj()->getInicio();
-
-		// 1. Caso de Inserción: Lista nueva vacía, o 'actual' va antes del inicio de 'nuevoInicio'
-		// CRÍTICO: Se debe verificar si nuevoInicio es NULL antes de acceder a sus miembros.
 		if (!nuevoInicio || esMenorFecha(fechaActual, nuevoInicio->getObj()->getInicio())) {
-
 			actual->setSig(nuevoInicio);
 			nuevoInicio = actual;
 		}
-
-		// 2. Caso de Inserción: En medio o al final
 		else {
 			NodoSolicitudAlquiler* s = nuevoInicio;
-
-			// Avanza 's' mientras el SIGUIENTE nodo (s->getSig()) sea menor o igual que 'actual'.
 			while (s->getSig() && !esMenorFecha(fechaActual, s->getSig()->getObj()->getInicio())) {
 				s = s->getSig();
 			}
 
-			// Re-enlaza 'actual'
 			actual->setSig(s->getSig());
 			s->setSig(actual);
 		}
