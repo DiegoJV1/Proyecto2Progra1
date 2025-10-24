@@ -10,7 +10,8 @@ public:
 	void insertarSolicitud(SolicitudAlquiler* aux);
 	SolicitudAlquiler* buscarSolicitud(string cod);
 	bool esSolicitud(string cod);
-
+	bool esMenorFecha(Fecha* f1, Fecha* f2);
+	void ordenarSolicitudes();
 	void cambiarAContrato(string cod);
 	string toString();
 };

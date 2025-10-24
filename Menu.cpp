@@ -842,9 +842,16 @@ void Menu::ejecutar() {
 
 					if (!negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->esSolicitud(cod)) {
 						ContratoAlquiler* contrato = new ContratoAlquiler(
-							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getCodigo(), 
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getCodigo(),
 							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getIdCliente(),
-							//seguir
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getIdColaborador(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getIdSucursal(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getPlaca(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getCanDias(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getInicio(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getEntrega(),
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getPrecioDia());
+							//seguir  string cod, string idCte, string idCol, string idSuc, string pl, int dias, Fecha* ini, Fecha* ent, float pDia
 						int estado = -1;
 						cout << "  CAMBIO DE ESTADO (Contrato: " << cod << ")" << endl;
 						cout << "  Estado actual: " << contrato->getEstado() << endl;
@@ -1012,6 +1019,17 @@ void Menu::ejecutar() {
 			}
 		}
 		case 6: {
+			while(opcion2!=3)
+			cout << "6-Reportes de Alquileres" << endl;
+			cout << "1-Visualizacion de todos los contratos por sucursal(del mas reciente al mas antiguo)" << endl;
+			cout << "2-Reporte alquieleres por colaborador" << endl;
+			cout << "3-Devolverse" << endl;
+			cout << "Digite el numero de la opcion seleccionada:" << endl;
+			cin >> opcion2;
+			switch (opcion2) {
+				cout << "1-Visualizacion de todos los contratos por sucursal(del mas reciente al mas antiguo)" << endl;
+
+			}
 
 		}
 	}
