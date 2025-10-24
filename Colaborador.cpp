@@ -6,7 +6,9 @@ Colaborador::Colaborador(): id(""), nombre(""), fechaIngreso(nullptr) {
 Colaborador::Colaborador(string id, string nom, Fecha* fecha) : id(id), nombre(nom), fechaIngreso(fechaIngreso) {
 	trabajos = new ColeccionSolicitudAlquiler();
 }
-Colaborador::~Colaborador() {}
+Colaborador::~Colaborador() {
+	delete trabajos;
+}
 void Colaborador::setNombre(string nom) { this->nombre = nom; }
 void Colaborador::setId(string id) { this->id = id; }
 void Colaborador::setFechaIngreso(Fecha* fecha) { this->fechaIngreso = fecha; }

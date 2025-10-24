@@ -5,7 +5,7 @@ private:
 	Cliente* obj;
 	NodoCliente* sig;
 public:
-	NodoCliente();
+	//NodoCliente();
 	NodoCliente(Cliente* aux);
 	~NodoCliente();
 	void setObj(Cliente* aux);

@@ -5,6 +5,5 @@ public:
 	PersonaFisica();
 	PersonaFisica(string id, string nom, string resi);
 	virtual ~PersonaFisica();
-	virtual string toString()override;
 };
 
