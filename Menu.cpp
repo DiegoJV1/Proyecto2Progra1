@@ -841,7 +841,10 @@ void Menu::ejecutar() {
 					}
 
 					if (!negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->esSolicitud(cod)) {
-						ContratoAlquiler* contrato = negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod);
+						ContratoAlquiler* contrato = new ContratoAlquiler(
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getCodigo(), 
+							negocio->getSucurales()->getSucursal(idSucursal)->getSolicitud(cod)->getIdCliente(),
+							//seguir
 						int estado = -1;
 						cout << "  CAMBIO DE ESTADO (Contrato: " << cod << ")" << endl;
 						cout << "  Estado actual: " << contrato->getEstado() << endl;
