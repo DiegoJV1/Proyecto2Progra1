@@ -11,7 +11,7 @@ public:
 	SolicitudAlquiler* buscarSolicitud(string cod);
 	bool esSolicitud(string cod);
 	bool esMayorFecha(Fecha* f1, Fecha* f2);
-	void ordenarSolicitudes();
+	void ordenarSolicitudesMenorAMayor();
 	void cambiarAContrato(string cod);
 	string toString();
 };

@@ -99,7 +99,7 @@ bool ColeccionSolicitudAlquiler::esMayorFecha(Fecha* f1, Fecha* f2) {
 	return f1->getDia() > f2->getDia();      
 }
 
-void ColeccionSolicitudAlquiler::ordenarSolicitudes() {
+void ColeccionSolicitudAlquiler::ordenarSolicitudesMenorAMayor() {
 	if (inicio == nullptr || inicio->getSig() == nullptr) return;
 
 	NodoSolicitudAlquiler* nuevoInicio = nullptr;

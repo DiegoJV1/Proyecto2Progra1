@@ -975,7 +975,7 @@ void Menu::ejecutar() {
 					cout << "Digte el la placa del vehiculo: " << endl;
 					cin >> placa;
 					if (negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa) == nullptr) {
-						cout << "ERROR: No existe el Cliente" << endl;
+						cout << "ERROR: No existe el Vehiculo" << endl;
 						break;
 					}
 					cout << negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa)->toStringBitacora();
@@ -995,7 +995,7 @@ void Menu::ejecutar() {
 					cout << "Digte el la placa del vehiculo: " << endl;
 					cin >> placa;
 					if (negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa) == nullptr) {
-						cout << "ERROR: No existe el Cliente" << endl;
+						cout << "ERROR: No existe el Vehiculo" << endl;
 						break;
 					}
 					cout << negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa)->getHistorialSolicitudes();
@@ -1036,6 +1036,26 @@ void Menu::ejecutar() {
 					cout << "ERROR: No existe la sucursal" << endl;
 					break;
 				}
+				negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->ordenarSolicitudesMenorAMayor();
+				negocio->getSucurales()->getSucursal(idSucursal)->getSolicitudes()->toString();
+
+			}
+			case 2: {
+				cout << "2-Reporte alquieleres por colaborador" << endl;
+				string colaborador, idSucursal;
+				cout << "ID Sucursal: ";
+				cin >> idSucursal;
+				if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+					cout << "ERROR: No existe la sucursal" << endl;
+					break;
+				}
+				cout << "Digte el colabrador: " << endl;
+				cin >> colaborador;
+				if (negocio->getSucurales()->getSucursal(idSucursal)->getColaborador(colaborador) == nullptr) {
+					cout << "ERROR: No existe el Colaborador" << endl;
+					break;
+				}
+				cout << negocio->getSucurales()->getSucursal(idSucursal)->getColaborador(colaborador)->getHistorialTrabajos()->toString();
 			}
 			}
 
