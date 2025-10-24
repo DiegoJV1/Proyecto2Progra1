@@ -1021,10 +1021,15 @@ void Menu::ejecutar() {
 		case 6: {
 			while(opcion2!=3)
 			cout << "6-Reportes de Alquileres" << endl;
-			cout << "1-Visualizacion de todos los contratos por sucursal" << endl;
+			cout << "1-Visualizacion de todos los contratos por sucursal(del mas reciente al mas antiguo)" << endl;
 			cout << "2-Reporte alquieleres por colaborador" << endl;
 			cout << "3-Devolverse" << endl;
 			cout << "Digite el numero de la opcion seleccionada:" << endl;
+			cin >> opcion2;
+			switch (opcion2) {
+				cout << "1-Visualizacion de todos los contratos por sucursal(del mas reciente al mas antiguo)" << endl;
+
+			}
 
 		}
 	}
