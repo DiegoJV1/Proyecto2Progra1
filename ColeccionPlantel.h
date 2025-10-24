@@ -13,6 +13,7 @@ public:
 	Plantel* buscarPlantelPorVehiculo(string placa);
 	string plantelRecomendado();
 	Plantel* getPlantel(string iden);
+	string porcentajeDeCapacidadDeLosPlanteles();
 	string toString();
 };
 

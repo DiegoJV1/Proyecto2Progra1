@@ -302,6 +302,7 @@ void Menu::ejecutar() {
 				}
 				}
 			}
+		}
 		case 2: {
 			while (opcion2 != 7) {
 				cout << "----Planteles, Parqueos y Vehiculos----" << endl;
@@ -893,7 +894,7 @@ void Menu::ejecutar() {
 				}
 
 			}
-
+		}
 		case 4: {
 			while (opcion2 != 3) {
 				cout << "4-Reportes de Cliente\n" << endl;
@@ -942,25 +943,73 @@ void Menu::ejecutar() {
 		}
 		case 5: {
 			opcion2 = -1;
-			while (opcion2 != 9) {
-				cout << "5-Reportes de Planteles y Vehiculos" << endl;
-				cout << "1-Creacion de solicitud" << endl;
-				cout << "1-Creacion de solicitud" << endl;
-				cout << "1-Creacion de solicitud" << endl;
-				cout << "5-Volver" << endl;
+			while (opcion2 != 4) {
+				cout << "5-Reportes de Planteles y Vehiculos\n" << endl;
+				cout << "1-Estados de un vehiculo especifico" << endl;
+				cout << "2-Reportes de contratos para un vehiculo especifico" << endl;
+				cout << "3-Reporte de porcentaje de ocupacion de los planteles" << endl;
+				cout << "4-Volver" << endl;
 				cout << "Digite el numero de la opcion seleccionada:" << endl;
+				cin >> opcion2;
+				switch (opcion2) {
+				case 1: {
+					cout << "1-Estados de un vehiculo especifico\n" << endl;
 
+					string placa, idSucursal;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						break;
+					}
+					cout << "Digte el la placa del vehiculo: " << endl;
+					cin >> placa;
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa) == nullptr) {
+						cout << "ERROR: No existe el Cliente" << endl;
+						break;
+					}
+					cout << negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa)->toStringBitacora();
+					system("pause");
+					system("cls");
+				}
+				case 2: {
+					cout << "2-Reportes de contratos para un vehiculo especifico\n" << endl;
+
+					string placa, idSucursal;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						break;
+					}
+					cout << "Digte el la placa del vehiculo: " << endl;
+					cin >> placa;
+					if (negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa) == nullptr) {
+						cout << "ERROR: No existe el Cliente" << endl;
+						break;
+					}
+					cout << negocio->getSucurales()->getSucursal(idSucursal)->getVehiculo(placa)->getHistorialSolicitudes();
+					system("pause");
+					system("cls");
+				}
+				case 3: {
+					cout << "3-Reporte de porcentaje de ocupacion de los planteles\n" << endl;
+					string plantel , idSucursal;
+					cout << "ID Sucursal: ";
+					cin >> idSucursal;
+					if (negocio->getSucurales()->getSucursal(idSucursal) == nullptr) {
+						cout << "ERROR: No existe la sucursal" << endl;
+						break;
+					}
+					cout << negocio->getSucurales()->getSucursal(idSucursal)->getPlanteles()->porcentajeDeCapacidadDeLosPlanteles();
+					system("pause");
+					system("cls");
+				}
+				}
 			}
 		}
+		case 6: {
+
 		}
-
-
-		}
-
-
-
-
-
-
 	}
 }

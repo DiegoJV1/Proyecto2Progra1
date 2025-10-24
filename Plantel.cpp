@@ -28,7 +28,7 @@ Plantel::~Plantel() {
 void Plantel::setCapacidad() {
 	capacidad = filas * columnas;
 }
-int Plantel::getCapacidad() { return capacidad; }
+int Plantel::getCapacidad() { return filas*columnas; }
 void Plantel::setTipo(char tipo) { this->tipo = tipo; }
 void Plantel::setIdentificacion(string iden) { this->identificacion = iden; }
 char Plantel::getTipo() { return tipo; }
@@ -267,6 +267,10 @@ Vehiculo* Plantel::buscarVehiculoPorCodigo(string cod) {
 			}
 		}
 	}
+}
+float Plantel:: porcentajeOcupado() {
+	int espaciosOcupados = getCapacidad() - espaciosLibres();
+	return (espaciosOcupados / getCapacidad()) * 100;
 }
 string Plantel::toString(){
 	stringstream ss;

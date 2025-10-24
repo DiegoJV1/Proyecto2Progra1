@@ -124,6 +124,7 @@ void Vehiculo::insertarSolicitud(SolicitudAlquiler* aux) {
 		solicitudes->insertarSolicitud(aux);
 	}
 }
+
 string Vehiculo::getPlaca() { return placa; }
 string Vehiculo::getModelo() { return modelo; }
 string Vehiculo::getMarca() { return marca; }
@@ -134,6 +135,8 @@ string Vehiculo::getCategoria() { return categoria; }
 double Vehiculo::getPrecioAlquiler() { return PrecioAlquiler; }
 Cliente* Vehiculo::getDueno() { return dueno; }
 ColeccionSolicitudAlquiler* Vehiculo::getHistorialSolicitudes() { return solicitudes; }
+
+
 string Vehiculo::toStringBitacora() {
 	stringstream ss;
 	ss << bitacoraEstado->toString() << endl;

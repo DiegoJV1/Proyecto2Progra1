@@ -29,6 +29,8 @@ public:
 	string recomendacionDeEstacionamiento();
 	int espaciosLibres();
 	string toString();
+
+	float porcentajeOcupado();
 	Vehiculo* buscarVehiculoPorCodigo(string cod);
 
 };

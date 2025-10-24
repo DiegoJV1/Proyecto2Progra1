@@ -88,6 +88,19 @@ string ColeccionPlantel::plantelRecomendado() {
 		return mayor->getIdentificacion();
 	}
 }
+string ColeccionPlantel::porcentajeDeCapacidadDeLosPlanteles() {
+	stringstream ss;
+	ss << "Lista de Planteles: " << endl;
+	actual = inicio;
+	int i = 0;
+	while (actual) {
+		float porcentajeOcupado = actual->getObj()->porcentajeOcupado();
+		ss << "Plantel #" << i << " ID: " << actual->getObj()->getIdentificacion() << " esta a un " << porcentajeOcupado << "% de su capacidad." << endl;			
+		actual = actual->getSig();
+		i++;
+	}
+	return ss.str();
+}
 string ColeccionPlantel::toString() {
 	stringstream ss;
 	ss << "Lista de Planteles: " << endl;
