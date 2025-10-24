@@ -4,7 +4,6 @@
 #include"ColeccionVehiculo.h"
 #include"ColeccionPlantel.h"
 #include"ColeccionSolicitudAlquiler.h"
-#include"NodoPlantel.h"
 class Sucursal{
 private:
 	string ubicacion, num;

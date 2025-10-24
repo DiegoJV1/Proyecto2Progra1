@@ -1,10 +1,10 @@
 #include "Vehiculo.h"
 #include<sstream>
-Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), dueno(nullptr), PrecioAlquiler(0.0){
+Vehiculo::Vehiculo(): placa(""), modelo(""), marca(""), ubiPlantel(""), categoria(""), tipoLicencia(""), estado(""), PrecioAlquiler(0.0){
 	solicitudes = new ColeccionSolicitudAlquiler();
 	bitacoraEstado = new ColeccionEstado();
 }
-Vehiculo::Vehiculo(string placa, string modelo, string marca, char cat, string lic, Cliente* dueno): placa(placa), modelo(modelo), marca(marca), tipoLicencia(lic), dueno(dueno) {
+Vehiculo::Vehiculo(string placa, string modelo, string marca, char cat, string lic): placa(placa), modelo(modelo), marca(marca), tipoLicencia(lic) {
 	solicitudes = new ColeccionSolicitudAlquiler();
 	bitacoraEstado = new ColeccionEstado();
 	setCategoria(cat);
@@ -17,7 +17,6 @@ Vehiculo::~Vehiculo() {
 	delete solicitudes;
 	solicitudes = nullptr;
 }
-void Vehiculo::setDueno(Cliente* aux) { this->dueno = aux; }
 void Vehiculo::setPlaca(string placa) { this->placa = placa; }
 void Vehiculo::setModelo(string modelo) { this->modelo = modelo; }
 void Vehiculo::setMarca(string marca) { this->marca = marca; }
@@ -133,7 +132,6 @@ string Vehiculo::getTipoLicencia() { return tipoLicencia; }
 string Vehiculo::getEstado() { return estado; }
 string Vehiculo::getCategoria() { return categoria; }
 double Vehiculo::getPrecioAlquiler() { return PrecioAlquiler; }
-Cliente* Vehiculo::getDueno() { return dueno; }
 ColeccionSolicitudAlquiler* Vehiculo::getHistorialSolicitudes() { return solicitudes; }
 
 
@@ -152,12 +150,5 @@ string Vehiculo::toString() {
 	ss << "Estado: " << estado << endl;
 	ss << "Categoria: " << categoria << endl;
 	ss << "Precio Alquiler: " << PrecioAlquiler << endl;
-	ss << " Dueno: " << endl;
-	if (dueno) {
-		ss << dueno->toString() << endl;
-	}
-	else {
-		ss << "Dueno Nulo" << endl;
-	}
 	return ss.str();
 }

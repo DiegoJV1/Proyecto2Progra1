@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
 #include"ColeccionSolicitudAlquiler.h"
+#include"SolicitudAlquiler.h"
 using namespace std;
 class Cliente{
 protected:
 	string id, nombre, residencia;
-	ColeccionSolicitudAlquiler* solicitudes;
+	//ColeccionSolicitudAlquiler* solicitudes;
 	int contador;
 public:
 	Cliente();
@@ -15,13 +16,13 @@ public:
 	void setId(string id);
 	void setNombre(string nom);
 	void setResidencia(string resi);
-	void insertarSolicitud(SolicitudAlquiler* aux);
+	//void insertarSolicitud(SolicitudAlquiler* aux);
 
 	string getId();
 	string getNombre();
 	string getResidencia();
 	int getCantidadDeSolicitudes();
-	ColeccionSolicitudAlquiler* getHistorialAlquiler();
+	//ColeccionSolicitudAlquiler* getHistorialAlquiler();
 
 	virtual string toString();
 };

@@ -1,6 +1,5 @@
 #pragma once
 #include"SolicitudAlquiler.h"
-#include "ContratoAlquiler.h"
 class NodoSolicitudAlquiler{
 private:
 	SolicitudAlquiler* obj;

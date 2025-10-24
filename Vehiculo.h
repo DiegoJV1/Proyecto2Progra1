@@ -1,19 +1,16 @@
 #pragma once
-#include"Cliente.h"
 #include"ColeccionEstado.h"
 #include"ColeccionSolicitudAlquiler.h"
 class Vehiculo{
 private:
-	Cliente* dueno;
 	string placa, modelo, marca, ubiPlantel, categoria, tipoLicencia, estado;
 	double PrecioAlquiler;
 	ColeccionEstado* bitacoraEstado;
 	ColeccionSolicitudAlquiler* solicitudes;
 public:
 	Vehiculo();
-	Vehiculo(string placa, string modelo, string marca, char cat, string lic, Cliente* dueno);
+	Vehiculo(string placa, string modelo, string marca, char cat, string lic);
 	~Vehiculo();
-	void setDueno(Cliente* aux);
 	void setPlaca(string placa);
 	void setModelo(string modelo);
 	void setMarca(string marca);
@@ -33,7 +30,6 @@ public:
 	string getEstado();
 	string getCategoria();
 	double getPrecioAlquiler();
-	Cliente* getDueno();
 	ColeccionSolicitudAlquiler* getHistorialSolicitudes();
 
 	string toStringBitacora();
